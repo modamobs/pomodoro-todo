@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { 
   Play, 
   Pause, 
@@ -11,7 +11,7 @@ import {
   TrendingUp 
 } from 'lucide-react';
 
-// 타입 정의
+// ????뺤쓽
 interface Todo {
   id: string;
   text: string;
@@ -28,7 +28,7 @@ interface TimerState {
   currentTodoId: string | null;
 }
 
-// 컴포넌트들
+// 而댄룷?뚰듃??
 const TodoItem: React.FC<{
   todo: Todo;
   isActive: boolean;
@@ -99,15 +99,15 @@ const Timer: React.FC<{
 
   return (
     <div className="bg-gray-800 rounded-xl p-8 text-center">
-      <h2 className="text-2xl font-bold text-white mb-4">포모도로 타이머</h2>
+      <h2 className="text-2xl font-bold text-white mb-4">?щえ?꾨줈 ??대㉧</h2>
       {currentTodo && (
-        <p className="text-gray-300 mb-6">현재 작업: {currentTodo.text}</p>
+        <p className="text-gray-300 mb-6">?꾩옱 ?묒뾽: {currentTodo.text}</p>
       )}
       
-      {/* 원형 진행바 */}
+      {/* ?먰삎 吏꾪뻾諛?*/}
       <div className="relative w-64 h-64 mx-auto mb-6">
         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-          {/* 배경 원 */}
+          {/* 諛곌꼍 ??*/}
           <circle
             cx="50"
             cy="50"
@@ -117,7 +117,7 @@ const Timer: React.FC<{
             fill="none"
             className="text-gray-700"
           />
-          {/* 진행 원 */}
+          {/* 吏꾪뻾 ??*/}
           <circle
             cx="50"
             cy="50"
@@ -137,13 +137,13 @@ const Timer: React.FC<{
               {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
             </div>
             <div className="text-sm text-gray-400 mt-1">
-              {Math.round(progress)}% 완료
+              {Math.round(progress)}% ?꾨즺
             </div>
           </div>
         </div>
       </div>
 
-      {/* 타이머 컨트롤 버튼 */}
+      {/* ??대㉧ 而⑦듃濡?踰꾪듉 */}
       <div className="flex justify-center space-x-4">
         {!timer.isRunning ? (
           <button
@@ -151,7 +151,7 @@ const Timer: React.FC<{
             className="flex items-center space-x-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
           >
             <Play className="w-5 h-5" />
-            <span>시작</span>
+            <span>?쒖옉</span>
           </button>
         ) : (
           <button
@@ -159,7 +159,7 @@ const Timer: React.FC<{
             className="flex items-center space-x-2 px-6 py-3 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors"
           >
             <Pause className="w-5 h-5" />
-            <span>일시정지</span>
+            <span>?쇱떆?뺤?</span>
           </button>
         )}
         <button
@@ -167,7 +167,7 @@ const Timer: React.FC<{
           className="flex items-center space-x-2 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
         >
           <Square className="w-5 h-5" />
-          <span>정지</span>
+          <span>?뺤?</span>
         </button>
       </div>
     </div>
@@ -178,41 +178,41 @@ const Statistics: React.FC<{
   todos: Todo[];
 }> = ({ todos }) => {
   const totalPomodoros = todos.reduce((sum, todo) => sum + todo.completedPomodoros, 0);
-  const totalTime = totalPomodoros * 25; // 25분 per pomodoro
+  const totalTime = totalPomodoros * 25; // 25遺?per pomodoro
   const completedTodos = todos.filter(todo => todo.completed).length;
 
   return (
     <div className="bg-gray-800 rounded-xl p-6">
       <h3 className="text-xl font-bold text-white mb-4 flex items-center">
         <TrendingUp className="w-5 h-5 mr-2" />
-        통계
+        ?듦퀎
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="text-center">
           <div className="text-3xl font-bold text-blue-400">{totalPomodoros}</div>
-          <div className="text-sm text-gray-400">완료된 포모도로</div>
+          <div className="text-sm text-gray-400">?꾨즺???щえ?꾨줈</div>
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-green-400">{totalTime}</div>
-          <div className="text-sm text-gray-400">총 집중 시간 (분)</div>
+          <div className="text-sm text-gray-400">珥?吏묒쨷 ?쒓컙 (遺?</div>
         </div>
         <div className="text-center">
           <div className="text-3xl font-bold text-purple-400">{completedTodos}</div>
-          <div className="text-sm text-gray-400">완료된 할 일</div>
+          <div className="text-sm text-gray-400">?꾨즺??????/div>
         </div>
       </div>
     </div>
   );
 };
 
-// 메인 컴포넌트
+// 硫붿씤 而댄룷?뚰듃
 const PomodoroTodo: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodoText, setNewTodoText] = useState('');
   const [timer, setTimer] = useState<TimerState>({
     isRunning: false,
     isPaused: false,
-    timeLeft: 25 * 60, // 25분
+    timeLeft: 25 * 60, // 25遺?
     totalTime: 25 * 60,
     currentTodoId: null,
   });
@@ -220,7 +220,7 @@ const PomodoroTodo: React.FC = () => {
   const intervalRef = useRef<number | null>(null);
   const audioRef = useRef<{ play: () => void } | null>(null);
 
-  // localStorage에서 데이터 로드
+  // localStorage?먯꽌 ?곗씠??濡쒕뱶
   useEffect(() => {
     const savedTodos = localStorage.getItem('pomodoro-todos');
     if (savedTodos) {
@@ -228,14 +228,14 @@ const PomodoroTodo: React.FC = () => {
     }
   }, []);
 
-  // todos 변경 시 localStorage에 저장
+  // todos 蹂寃???localStorage?????
   useEffect(() => {
     localStorage.setItem('pomodoro-todos', JSON.stringify(todos));
   }, [todos]);
 
-  // 알림음 설정
+  // ?뚮┝???ㅼ젙
   useEffect(() => {
-    // 간단한 알림음 생성 (Web Audio API 사용)
+    // 媛꾨떒???뚮┝???앹꽦 (Web Audio API ?ъ슜)
     const audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
     const createBeep = () => {
       const oscillator = audioContext.createOscillator();
@@ -257,20 +257,20 @@ const PomodoroTodo: React.FC = () => {
     audioRef.current = { play: createBeep };
   }, []);
 
-  // 브라우저 알림 권한 요청
+  // 釉뚮씪?곗? ?뚮┝ 沅뚰븳 ?붿껌
   useEffect(() => {
     if ('Notification' in window && Notification.permission === 'default') {
       Notification.requestPermission();
     }
   }, []);
 
-  // 타이머 로직
+  // ??대㉧ 濡쒖쭅
   useEffect(() => {
     if (timer.isRunning && !timer.isPaused) {
-      intervalRef.current = setInterval(() => {
+      intervalRef.current = window.setInterval(() => {
         setTimer(prev => {
           if (prev.timeLeft <= 1) {
-            // 타이머 완료
+            // ??대㉧ ?꾨즺
             handleTimerComplete();
             return {
               ...prev,
@@ -299,20 +299,20 @@ const PomodoroTodo: React.FC = () => {
   }, [timer.isRunning, timer.isPaused]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleTimerComplete = () => {
-    // 알림음 재생
+    // ?뚮┝???ъ깮
     if (audioRef.current) {
       audioRef.current.play();
     }
 
-    // 브라우저 알림
+    // 釉뚮씪?곗? ?뚮┝
     if ('Notification' in window && Notification.permission === 'granted') {
-      new Notification('포모도로 완료!', {
-        body: '25분 집중 시간이 완료되었습니다. 휴식을 취하세요!',
+      new Notification('?щえ?꾨줈 ?꾨즺!', {
+        body: '25遺?吏묒쨷 ?쒓컙???꾨즺?섏뿀?듬땲?? ?댁떇??痍⑦븯?몄슂!',
         icon: '/vite.svg',
       });
     }
 
-    // 완료된 포모도로 수 증가
+    // ?꾨즺???щえ?꾨줈 ??利앷?
     if (timer.currentTodoId) {
       setTodos(prev => prev.map(todo => 
         todo.id === timer.currentTodoId 
@@ -384,13 +384,13 @@ const PomodoroTodo: React.FC = () => {
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2 flex items-center justify-center">
             <Clock className="w-10 h-10 mr-3 text-blue-400" />
-            포모도로 투두
+            ?щえ?꾨줈 ?щ몢
           </h1>
-          <p className="text-gray-400">집중력 향상을 위한 할 일 관리 앱</p>
+          <p className="text-gray-400">吏묒쨷???μ긽???꾪븳 ????愿由???/p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          {/* 타이머 섹션 */}
+          {/* ??대㉧ ?뱀뀡 */}
           <div>
             <Timer
               timer={timer}
@@ -401,22 +401,22 @@ const PomodoroTodo: React.FC = () => {
             />
           </div>
 
-          {/* 통계 섹션 */}
+          {/* ?듦퀎 ?뱀뀡 */}
           <div>
             <Statistics todos={todos} />
           </div>
         </div>
 
-        {/* 할 일 추가 */}
+        {/* ????異붽? */}
         <div className="bg-gray-800 rounded-xl p-6 mb-6">
-          <h2 className="text-xl font-bold mb-4">새 할 일 추가</h2>
+          <h2 className="text-xl font-bold mb-4">??????異붽?</h2>
           <div className="flex space-x-4">
             <input
               type="text"
               value={newTodoText}
               onChange={(e) => setNewTodoText(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && addTodo()}
-              placeholder="할 일을 입력하세요..."
+              placeholder="???쇱쓣 ?낅젰?섏꽭??.."
               className="flex-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
             />
             <button
@@ -424,16 +424,16 @@ const PomodoroTodo: React.FC = () => {
               className="flex items-center space-x-2 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               <Plus className="w-5 h-5" />
-              <span>추가</span>
+              <span>異붽?</span>
             </button>
           </div>
         </div>
 
-        {/* 할 일 목록 */}
+        {/* ????紐⑸줉 */}
         <div className="bg-gray-800 rounded-xl p-6">
-          <h2 className="text-xl font-bold mb-4">할 일 목록</h2>
+          <h2 className="text-xl font-bold mb-4">????紐⑸줉</h2>
           {todos.length === 0 ? (
-            <p className="text-gray-400 text-center py-8">아직 할 일이 없습니다. 위에서 새 할 일을 추가해보세요!</p>
+            <p className="text-gray-400 text-center py-8">?꾩쭅 ???쇱씠 ?놁뒿?덈떎. ?꾩뿉???????쇱쓣 異붽??대낫?몄슂!</p>
           ) : (
             <div className="space-y-4">
               {todos.map(todo => (
